@@ -1,0 +1,12 @@
+version: '2'
+services:
+  tf-cpu-36:
+    container_name: tfcpu36
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8888:8888"
+      - "6006:6006"
+    volumes:
+      - $HOME/DockerData/tensorflow:/root/pyprojects
