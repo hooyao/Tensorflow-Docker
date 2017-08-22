@@ -19,7 +19,7 @@ RUN conda config --set show_channel_urls yes
 RUN rm -f Miniconda2-latest-Linux-x86_64.sh
 
 RUN conda create -n ${CONDA_ENV_NAME} python=3.6 -y
-ADD https://storage.googleapis.com/tensorflow/linux/cpu/${TF_FILE_NAME} ${TF_FILE_NAME}
+ADD https://storage.googleapis.com/tensorflow/linux/gpu/${TF_FILE_NAME} ${TF_FILE_NAME}
 RUN chmod +wrx ${TF_FILE_NAME}
 RUN source activate ${CONDA_ENV_NAME} && pip install --ignore-installed --upgrade ${TF_FILE_NAME}
 RUN source activate ${CONDA_ENV_NAME} && conda install pandas scikit-learn scipy matplotlib sympy -y
