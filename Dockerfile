@@ -1,10 +1,10 @@
-FROM ubuntu:16.04
+FROM nvidia/cuda:9.0-cudnn7-runtime-ubuntu16.04
 MAINTAINER Hu Yao <hooyao@gmail.com>
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
-ENV CONDA_ENV_NAME=tf-cpu-36
-ENV TF_FILE_NAME=tensorflow_gpu-1.3.0-cp36-cp36m-linux_x86_64.whl
+ENV CONDA_ENV_NAME=tf-180-gpu-36
+ENV TF_FILE_NAME=tensorflow_gpu-1.8.0-cp36-cp36m-linux_x86_64.whl
 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 RUN apt-get update --fix-missing && apt-get install -y bzip2
