@@ -19,13 +19,11 @@ ENV PATH /opt/conda/bin:$PATH
 
 RUN conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/ && \
     conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ && \
-    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge && \
-    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/ && \
     conda config --set show_channel_urls yes
 
 RUN conda install -y python=3.6 && \
     conda update conda && \
-    conda install numpy pandas scikit-learn scipy matplotlib sympy jupyter nb_conda -y &&\
+    conda install numpy=1.14 pandas scikit-learn scipy matplotlib sympy jupyter nb_conda -y &&\
     conda clean -a && \
     rm -rf /opt/conda/pkgs/*
 RUN curl https://storage.googleapis.com/tensorflow/linux/gpu/${TF_FILE_NAME} --output ${TF_FILE_NAME} && \
