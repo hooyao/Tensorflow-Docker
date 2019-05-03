@@ -1,8 +1,8 @@
 version: '2'
 services:
-  tf-cpu-36:
-    container_name: tfcpu36
-    image: hooyao/tensorflow-dev:180_gpu
+  tf1_gpu:
+    container_name: tf1_${IMG_TAG}
+    image: hooyao/tensorflow-dev:${IMG_TAG}
     ports:
       - "8888:8888"
       - "6006:6006"
