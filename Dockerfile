@@ -21,7 +21,7 @@ RUN conda install -y python=3.7 && \
     conda clean -a && \
     rm -rf /opt/conda/pkgs/*
 
-RUN pip install tensorflow-gpu==2.0.0-alpha0 && \
+RUN pip install tensorflow-gpu==2.0.0-beta0 && \
     rm -rf /root/.cache/pip/*
 
 RUN mkdir /root/pyprojects
