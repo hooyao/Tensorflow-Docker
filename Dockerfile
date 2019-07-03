@@ -3,7 +3,7 @@ LABEL author="Hu Yao <hooyao@gmail.com>"
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 ENV CONDA_BIN=https://repo.continuum.io/miniconda/Miniconda3-4.6.14-Linux-x86_64.sh
-ENV TF_FILE_NAME=tensorflow_gpu-1.13.1-cp37-cp37m-linux_x86_64.whl
+ENV TF_FILE_NAME=tensorflow_gpu-1.14.0-cp37-cp37m-linux_x86_64.whl
 
 RUN apt-get -qq update && apt-get -qq -y install curl bzip2 \
     && curl -sSL ${CONDA_BIN} -o /tmp/miniconda.sh \
