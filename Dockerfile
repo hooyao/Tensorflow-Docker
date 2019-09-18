@@ -2,7 +2,7 @@ FROM nvidia/cuda:10.0-cudnn7-runtime-ubuntu16.04
 LABEL author="Hu Yao <hooyao@gmail.com>"
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
-ENV CONDA_BIN=https://repo.continuum.io/miniconda/Miniconda3-4.6.14-Linux-x86_64.sh
+ENV CONDA_BIN=https://repo.continuum.io/miniconda/Miniconda3-4.7.10-Linux-x86_64.sh
 
 RUN apt-get -qq update && apt-get -qq -y install curl bzip2 \
     && curl -sSL ${CONDA_BIN} -o /tmp/miniconda.sh \
@@ -21,7 +21,7 @@ RUN conda install -y python=3.7 && \
     conda clean -a && \
     rm -rf /opt/conda/pkgs/*
 
-RUN pip install tensorflow-gpu==2.0.0-beta1 && \
+RUN pip install tensorflow-gpu==2.0.0-rc1 && \
     rm -rf /root/.cache/pip/*
 
 RUN mkdir /root/pyprojects
