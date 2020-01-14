@@ -16,12 +16,11 @@ RUN apt-get -qq update && apt-get -qq -y install curl bzip2 \
 ENV PATH /opt/conda/bin:$PATH
 
 RUN conda install -y python=3.7 && \
-    conda update conda && \
     conda install numpy pandas cython scikit-learn scipy matplotlib sympy jupyter nb_conda -y &&\
     conda clean -a && \
     rm -rf /opt/conda/pkgs/*
 
-RUN pip install tensorflow-gpu==2.0.0-rc1 && \
+RUN pip install --upgrade --upgrade-strategy only-if-needed tensorflow-gpu==2.0.0 && \
     rm -rf /root/.cache/pip/*
 
 RUN mkdir /root/pyprojects
