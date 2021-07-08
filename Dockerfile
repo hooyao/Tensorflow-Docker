@@ -1,8 +1,10 @@
-FROM nvidia/cuda:10.0-cudnn7-runtime-ubuntu16.04
+FROM nvidia/cuda:10.1-cudnn7-runtime-ubuntu18.04
+
 LABEL author="Hu Yao <hooyao@gmail.com>"
 
+ARG CONDA_BIN=https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.3-Linux-x86_64.sh
+
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
-ENV CONDA_BIN=https://repo.continuum.io/miniconda/Miniconda3-4.7.10-Linux-x86_64.sh
 
 RUN apt-get -qq update && apt-get -qq -y install curl bzip2 \
     && curl -sSL ${CONDA_BIN} -o /tmp/miniconda.sh \
@@ -15,13 +17,12 @@ RUN apt-get -qq update && apt-get -qq -y install curl bzip2 \
     && conda clean --all --yes
 ENV PATH /opt/conda/bin:$PATH
 
-RUN conda install -y python=3.7 && \
-    conda install numpy pandas cython scikit-learn scipy matplotlib sympy jupyter nb_conda -y &&\
+RUN pip install --upgrade --upgrade-strategy only-if-needed tensorflow-gpu==2.3.0 && \
+    rm -rf /root/.cache/pip/*
+
+RUN conda install numpy pandas cython scikit-learn scipy matplotlib sympy jupyter nb_conda -y && \
     conda clean -a && \
     rm -rf /opt/conda/pkgs/*
-
-RUN pip install --upgrade --upgrade-strategy only-if-needed tensorflow-gpu==2.0.0 && \
-    rm -rf /root/.cache/pip/*
 
 RUN mkdir /root/pyprojects
 WORKDIR /root/pyprojects
